@@ -7,3 +7,20 @@
 <h4>@Resource.AboutText <a href="http://www.rolisteam.org/">Rolisteam</a>.</h4>
 <p>@Resource.AboutDetails</p>
 <div>@Resource.AboutTeam</div>
+
+<ul>
+    <h2>@Resource.Team</h2>
+
+    <h3>@Resource.Programmers</h3>
+    <ul>
+        @{foreach (string s in (string[])ViewData["programmers"])
+            {
+        <li>@s</li>}}
+    </ul>
+    <h3>Webmasters</h3>
+    <ul>
+        @{foreach (string s in (string[])ViewData["webmasters"])
+            {
+        <li>@s</li>}}
+    </ul>
+</ul>

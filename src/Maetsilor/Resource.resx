@@ -162,4 +162,10 @@
   <data name="AboutTeam" xml:space="preserve">
     <value>Our team</value>
   </data>
+  <data name="MatchMaking" xml:space="preserve">
+    <value>Matchmaking</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
 </root>
