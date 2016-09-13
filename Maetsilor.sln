@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E1CA4045-23FE-4855-84D2-F061B1F855AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2E186D1-A859-4AF9-8EF7-B94C0D6E28B7}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Maetsilor", "src\Maetsilor\Maetsilor.xproj", "{193D1C41-509D-4234-8758-0E0F5E30B302}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{193D1C41-509D-4234-8758-0E0F5E30B302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{193D1C41-509D-4234-8758-0E0F5E30B302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{193D1C41-509D-4234-8758-0E0F5E30B302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{193D1C41-509D-4234-8758-0E0F5E30B302}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{193D1C41-509D-4234-8758-0E0F5E30B302} = {E1CA4045-23FE-4855-84D2-F061B1F855AF}
+	EndGlobalSection
+EndGlobal
