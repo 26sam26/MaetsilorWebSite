@@ -159,4 +159,7 @@
   <data name="FunctReleased" xml:space="preserve">
     <value>Released funtionalities</value>
   </data>
+  <data name="AboutTeam" xml:space="preserve">
+    <value>Our team</value>
+  </data>
 </root>
