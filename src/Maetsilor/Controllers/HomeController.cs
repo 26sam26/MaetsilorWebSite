@@ -27,6 +27,12 @@ namespace Maetsilor.Controllers
             return View();
         }
 
+        public IActionResult MatchMaking()
+        {
+            ViewData["Message"] = "MatchMaking section";
+
+            return View();
+        }
         public IActionResult Error()
         {
             return View();
