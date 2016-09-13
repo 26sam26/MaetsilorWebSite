@@ -15,19 +15,33 @@ namespace Maetsilor.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            string[] programmers = new string[] {
+                "David Bisaillon",
+                "Alexandre Bricault-Leduc",
+                "Francis Henry",
+                "Nicolas Lapointe",
+                "William Lapointe",
+                "Justin Leblanc",
+                "Samuel Savoie-Lapierre"};
 
+            string[] webmasters = new string[]{
+                "Samuel Savoie-Lapierre",
+                "Xavier Laporte"
+            };
+
+            ViewData["programmers"] = programmers;
+            ViewData["webmasters"] = webmasters;
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }
 
-        public IActionResult MatchMaking()
+
+public IActionResult MatchMaking()
         {
             ViewData["Message"] = "MatchMaking section";
 
