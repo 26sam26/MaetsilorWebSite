@@ -1,0 +1,84 @@
+@model Maetsilor.Models.ForumViewModels.Sujet
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Sujet</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Titre" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Titre" class="form-control" />
+                <span asp-validation-for="Titre" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Auteur" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Auteur" class="form-control" />
+                <span asp-validation-for="Auteur" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateCréation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateCréation" class="form-control" />
+                <span asp-validation-for="DateCréation" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DernièreRéponse" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DernièreRéponse" class="form-control" />
+                <span asp-validation-for="DernièreRéponse" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DernierRépondant" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DernierRépondant" class="form-control" />
+                <span asp-validation-for="DernierRépondant" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="NbRéponse" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NbRéponse" class="form-control" />
+                <span asp-validation-for="NbRéponse" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

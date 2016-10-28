@@ -29,7 +29,7 @@ namespace Maetsilor
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
-
+            
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -83,6 +83,11 @@ namespace Maetsilor
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            SeedData.InitialiserUsers();
+            SeedData.InitialiserRoles();
+            SeedData.AssossiateUsersRole();
         }
     }
 }

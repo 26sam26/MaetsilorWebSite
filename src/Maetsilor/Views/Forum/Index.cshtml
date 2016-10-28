@@ -1,0 +1,77 @@
+@model IEnumerable<Maetsilor.Models.ForumViewModels.Sujet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCréation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DernièreRéponse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DernierRépondant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbRéponse)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCréation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DernièreRéponse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DernierRépondant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbRéponse)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
