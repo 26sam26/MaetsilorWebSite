@@ -24,8 +24,10 @@ namespace Maetsilor.Data
             IdentityRole[] ir = new IdentityRole[]
             {
                 new IdentityRole {Name = "Administrateur"},
-                new IdentityRole {Name = "GestionnaireTerrains"},
-                new IdentityRole {Name = "GestionnairePartenaires"},
+                new IdentityRole {Name = "Utilisateur"},
+                new IdentityRole {Name = "Modérateur"},
+                new IdentityRole {Name = "ExclusionForum"},
+                new IdentityRole {Name = "Autre"}
             };
             foreach (IdentityRole i in ir)
             {
@@ -46,9 +48,9 @@ namespace Maetsilor.Data
         {
             ApplicationUser[] appUsers = new ApplicationUser[]
             {
-                 new ApplicationUser {Email = "admin@terrains.ca", PasswordHash = "Test123!" },
-                 new ApplicationUser {Email = "usager1@terrains.ca", PasswordHash = "Usager123!" },
-                 new ApplicationUser {Email = "usager2@terrains.ca", PasswordHash = "Usager123!" }
+                 new ApplicationUser {Email = "admin@test.ca", PasswordHash = "Test123!" },
+                 new ApplicationUser {Email = "usager1@test.ca", PasswordHash = "Test123!" },
+                 new ApplicationUser {Email = "usager2@test.ca", PasswordHash = "Test123!" }
             };
 
             foreach (ApplicationUser u in appUsers)
@@ -77,17 +79,17 @@ namespace Maetsilor.Data
             {
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "admin@terrains.ca").Id,
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "admin@test.ca").Id,
                     RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Administrateur").Id
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager1@terrains.ca").Id,
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager1@test.ca").Id,
                     RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "GestionnaireTerrains").Id
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "admin@terrains.ca").Id,
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "admin@test.ca").Id,
                     RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "GestionnairePartenaires").Id
                 }
             };

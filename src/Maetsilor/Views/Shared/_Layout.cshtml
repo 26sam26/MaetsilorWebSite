@@ -56,7 +56,13 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">@Resource.About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="MatchMaking">@Resource.MatchMaking</a></li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
                     <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forum</a></li>
+                   
+                    <li><a asp-area="" asp-controller="Membre" asp-action="Index">Membre</a></li>
+                    }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

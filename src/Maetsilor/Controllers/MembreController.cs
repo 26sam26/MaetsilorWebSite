@@ -5,80 +5,49 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Maetsilor.Data;
-using Maetsilor.Models.ForumViewModels;
+using Maetsilor.Models;
 
 namespace Maetsilor.Controllers
 {
-    public class ForumController : Controller
+    public class MembreController : Controller
     {
         private ApplicationDbContext _context = null;
-        public ForumController(ApplicationDbContext context)
+        public MembreController(ApplicationDbContext context)
         {
             _context = context;
         }
-        // GET: Forum
+        // GET: Membre
         public ActionResult Index()
         {
-            List<Sujet> ls = new List<Sujet>();
-            foreach(Sujet s in _context.Sujets)
+            List<MembreViewModels> lmvm = new List<MembreViewModels>();
+            foreach(ApplicationUser appUser in _context.Users)
             {
-                ls.Add(s);
+               lmvm.Add(new MembreViewModels(appUser));
             }
-            return View(ls);
+            return View(lmvm);
         }
 
-        // GET: Forum/Details/5
+        // GET: Membre/Details/5
         public ActionResult Details(int id)
         {
-            Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
-            return View(s);
+            return View();
         }
 
-        // GET: Forum/Create
+        // GET: Membre/Create
         public ActionResult Create()
         {
-            return View("Create");
+            return View();
         }
 
-        // POST: Forum/Create
+        // POST: Membre/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                Sujet sujet = new Sujet();
-                TryUpdateModelAsync(sujet);
-                sujet.NbReponse = 0;
-                sujet.DateCreation = DateTime.Now;
-                //sujet.Auteur = ;
-                _context.Sujets.Add(sujet);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("Home");
-            }
-        }
+                // TODO: Add insert logic here
 
-        // GET: Forum/Edit/5
-        public ActionResult Edit(int id)
-        {
-            Sujet s = _context.Sujets.FirstOrDefault(su=>su.ID == id);
-            return View(s);
-        }
-
-        // POST: Forum/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                Sujet sujet = _context.Sujets.FirstOrDefault(su => su.ID == id);
-                TryUpdateModelAsync(sujet);
-                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -87,22 +56,44 @@ namespace Maetsilor.Controllers
             }
         }
 
-        // GET: Forum/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Membre/Edit/5
+        public ActionResult Edit(int id)
         {
-            return View("Delete");
+            return View();
         }
 
-        // POST: Forum/Delete/5
+        // POST: Membre/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Membre/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Membre/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
-                Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
-                _context.Sujets.Remove(s);
-                _context.SaveChanges();
+                // TODO: Add delete logic here
+
                 return RedirectToAction("Index");
             }
             catch
