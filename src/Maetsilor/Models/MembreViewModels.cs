@@ -12,6 +12,10 @@ namespace Maetsilor.Models
         public string Email { get; set; }
         public string Role { get; set; }
 
+        public string DisplayName { get; set; }
+
+        //J'imagine qui faudrait mettre l'image du profil aussi. Je sais pas trop ça devrait être quelle type.
+
         public Membre(ApplicationUser appUser)
         {
             ID = appUser.Id;

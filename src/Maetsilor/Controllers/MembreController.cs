@@ -71,7 +71,8 @@ namespace Maetsilor.Controllers
             {
 
                 ApplicationUser allo = _context.Users.Where(m => m.Id == id).Single();
-                //allo.InfoSup.DisplayName = collection.
+               //No fucking clue. Sory
+                
 
                 return RedirectToAction("Index");
             }
