@@ -34,7 +34,7 @@
             <td>
                 @if (User.IsInRole("Modérateur"))
                 {
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID  }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID  }) 
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID});
 
                 }

@@ -19,10 +19,10 @@ namespace Maetsilor.Controllers
         // GET: Membre
         public ActionResult Index()
         {
-            List<MembreViewModels> lmvm = new List<MembreViewModels>();
+            List<Membre> lmvm = new List<Membre>();
             foreach(ApplicationUser appUser in _context.Users)
             {
-               lmvm.Add(new MembreViewModels(appUser));
+               lmvm.Add(new Membre(appUser));
             }
             return View(lmvm);
         }
@@ -69,7 +69,7 @@ namespace Maetsilor.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+               
 
                 return RedirectToAction("Index");
             }
