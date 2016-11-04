@@ -13,6 +13,7 @@ namespace Maetsilor.Data
     {
         public DbSet<Sujet> Sujets { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<AspNetUsersInfoSup> InfoSups { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

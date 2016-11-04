@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Maetsilor.Data;
 
-namespace Maetsilor.Data.Migrations
+namespace Maetsilor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161028162559__ajoutMessageSujet")]
-    partial class _ajoutMessageSujet
+    [Migration("20161104165429__Initial")]
+    partial class _Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace Maetsilor.Data.Migrations
                         .HasAnnotation("MaxLength", 256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<int?>("InfoSupID");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -56,6 +58,8 @@ namespace Maetsilor.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InfoSupID");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -64,6 +68,22 @@ namespace Maetsilor.Data.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Maetsilor.Models.AspNetUsersInfoSup", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("ImageType");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("InfoSups");
                 });
 
             modelBuilder.Entity("Maetsilor.Models.ForumViewModels.Message", b =>
@@ -91,15 +111,15 @@ namespace Maetsilor.Data.Migrations
 
                     b.Property<string>("Auteur");
 
-                    b.Property<DateTime>("DateCréation");
+                    b.Property<DateTime>("DateCreation");
 
-                    b.Property<string>("DernierRépondant");
+                    b.Property<string>("DernierRepondant");
 
-                    b.Property<DateTime>("DernièreRéponse");
+                    b.Property<DateTime>("DerniereReponse");
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("NbRéponse");
+                    b.Property<int>("NbReponse");
 
                     b.Property<string>("Titre");
 
@@ -213,6 +233,13 @@ namespace Maetsilor.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Maetsilor.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Maetsilor.Models.AspNetUsersInfoSup", "InfoSup")
+                        .WithMany()
+                        .HasForeignKey("InfoSupID");
                 });
 
             modelBuilder.Entity("Maetsilor.Models.ForumViewModels.Message", b =>

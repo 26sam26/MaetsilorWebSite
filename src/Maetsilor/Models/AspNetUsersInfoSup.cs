@@ -9,8 +9,9 @@ namespace Maetsilor.Models
     {
         public int ID { get; set; }
         public byte[] Image { get; set; }
+        public string ImageType { get; set; }
 
-        public string Username { get; set; }
+        public string DisplayName { get; set; }
 
     }
 }

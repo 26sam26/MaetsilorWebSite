@@ -1,16 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Maetsilor.Data.Migrations
+namespace Maetsilor.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class _Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "InfoSups",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DisplayName = table.Column<string>(nullable: true),
+                    Image = table.Column<byte[]>(nullable: true),
+                    ImageType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InfoSups", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sujets",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Auteur = table.Column<string>(nullable: true),
+                    DateCreation = table.Column<DateTime>(nullable: false),
+                    DernierRepondant = table.Column<string>(nullable: true),
+                    DerniereReponse = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    NbReponse = table.Column<int>(nullable: false),
+                    Titre = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sujets", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -48,6 +80,7 @@ namespace Maetsilor.Data.Migrations
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
+                    InfoSupID = table.Column<int>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -62,6 +95,33 @@ namespace Maetsilor.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_InfoSups_InfoSupID",
+                        column: x => x.InfoSupID,
+                        principalTable: "InfoSups",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Auteur = table.Column<string>(nullable: true),
+                    SujetID = table.Column<int>(nullable: true),
+                    Texte = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Messages_Sujets_SujetID",
+                        column: x => x.SujetID,
+                        principalTable: "Sujets",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,6 +211,27 @@ namespace Maetsilor.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_InfoSupID",
+                table: "AspNetUsers",
+                column: "InfoSupID");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_SujetID",
+                table: "Messages",
+                column: "SujetID");
+
+            migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName");
@@ -179,21 +260,13 @@ namespace Maetsilor.Data.Migrations
                 name: "IX_AspNetUserRoles_UserId",
                 table: "AspNetUserRoles",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Messages");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -210,10 +283,16 @@ namespace Maetsilor.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Sujets");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "InfoSups");
         }
     }
 }

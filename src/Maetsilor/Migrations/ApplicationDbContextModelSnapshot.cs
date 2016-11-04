@@ -1,23 +1,131 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Maetsilor.Data;
 
-namespace Maetsilor.Data.Migrations
+namespace Maetsilor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("00000000000000_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc3")
+                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Maetsilor.Models.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<string>("Email")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<int?>("InfoSupID");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName")
+                        .HasAnnotation("MaxLength", 256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InfoSupID");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Maetsilor.Models.AspNetUsersInfoSup", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("ImageType");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("InfoSups");
+                });
+
+            modelBuilder.Entity("Maetsilor.Models.ForumViewModels.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Auteur");
+
+                    b.Property<int?>("SujetID");
+
+                    b.Property<string>("Texte");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("SujetID");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Maetsilor.Models.ForumViewModels.Sujet", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Auteur");
+
+                    b.Property<DateTime>("DateCreation");
+
+                    b.Property<string>("DernierRepondant");
+
+                    b.Property<DateTime>("DerniereReponse");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("NbReponse");
+
+                    b.Property<string>("Titre");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Sujets");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
@@ -128,51 +236,16 @@ namespace Maetsilor.Data.Migrations
 
             modelBuilder.Entity("Maetsilor.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id");
+                    b.HasOne("Maetsilor.Models.AspNetUsersInfoSup", "InfoSup")
+                        .WithMany()
+                        .HasForeignKey("InfoSupID");
+                });
 
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Email")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex");
-
-                    b.ToTable("AspNetUsers");
+            modelBuilder.Entity("Maetsilor.Models.ForumViewModels.Message", b =>
+                {
+                    b.HasOne("Maetsilor.Models.ForumViewModels.Sujet")
+                        .WithMany("Messages")
+                        .HasForeignKey("SujetID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
