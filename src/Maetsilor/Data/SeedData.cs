@@ -85,13 +85,10 @@ namespace Maetsilor.Data
                 new IdentityUserRole<string>()
                 {
                     UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager1@test.ca").Id,
-                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "GestionnaireTerrains").Id
-                },
-                new IdentityUserRole<string>()
-                {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "admin@test.ca").Id,
-                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "GestionnairePartenaires").Id
+                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Modérateur").Id
                 }
+
+
             };
 
             foreach (IdentityUserRole<string> ur in users_roles)
@@ -101,6 +98,7 @@ namespace Maetsilor.Data
                     Context.UserRoles.Add(ur);
                 }
             }
+            Context.SaveChanges();
         }
     }
 }
