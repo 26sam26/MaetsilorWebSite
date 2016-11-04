@@ -49,9 +49,9 @@ namespace Maetsilor.Controllers
             {
                 Sujet sujet = new Sujet();
                 TryUpdateModelAsync(sujet);
-                sujet.NbReponse = 0;
-                sujet.DateCreation = DateTime.Now;
-                //sujet.Auteur = ;
+                sujet.NbRéponse = 0;
+                sujet.DateCréation = DateTime.Now;
+                sujet.Auteur = HttpContext.User.Identity.Name.ToString(); 
                 _context.Sujets.Add(sujet);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

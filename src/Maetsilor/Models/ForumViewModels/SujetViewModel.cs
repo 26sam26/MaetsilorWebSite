@@ -11,12 +11,12 @@ namespace Maetsilor.Models.ForumViewModels
         public string Titre { get; set; }
         public string Description { get; set; }
         public string Auteur { get; set; }
-        public DateTime DateCreation { get; set; }
-        public DateTime DerniereReponse { get; set; }
-        public string DernierRepondant { get; set; }
+        public DateTime DateCréation { get; set; }
+        public DateTime DernièreRéponse { get; set; }
+        public string DernierRépondant { get; set; }
         public List<Message> Messages { get; set; }
-        public int NbReponse {
-            get { return Messages.Count; }
+        public int NbRéponse {
+            get { if (Messages != null) return Messages.Count; else  return 0; }
             set { } }
     }
 }
