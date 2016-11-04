@@ -40,38 +40,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Auteur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCréation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DernièreRéponse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DernierRépondant)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NbRéponse)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCréation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DernièreRéponse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DernierRépondant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbRéponse)
+                </td>
+                <td>
+                    @if (User.IsInRole("Modérateur"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    };
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
