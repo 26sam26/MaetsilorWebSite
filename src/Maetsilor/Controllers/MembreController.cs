@@ -82,9 +82,12 @@ namespace Maetsilor.Controllers
         }
 
         // GET: Membre/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            _context.Remove(_context.Users.Where(m => m.Id == id).Single());
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+            
         }
 
         // POST: Membre/Delete/5
@@ -95,9 +98,7 @@ namespace Maetsilor.Controllers
             try
             {
                 // TODO: Add delete logic here
-               _context.Remove(_context.Users.Where(m => m.Id == id).Single());
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
