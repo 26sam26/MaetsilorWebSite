@@ -90,7 +90,17 @@ namespace Maetsilor.Controllers
         // GET: Forum/Delete/5
         public ActionResult Delete(int id)
         {
-            return View("Delete");
+            try
+            {
+                Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
+                _context.Sujets.Remove(s);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Forum/Delete/5
