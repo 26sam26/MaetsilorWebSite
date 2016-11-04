@@ -15,6 +15,8 @@ namespace Maetsilor.Models.ForumViewModels
         public DateTime DerniereReponse { get; set; }
         public string DernierRepondant { get; set; }
         public List<Message> Messages { get; set; }
-        public int NbReponse { get; set; }
+        public int NbReponse {
+            get { return Messages.Count; }
+            set { } }
     }
 }
