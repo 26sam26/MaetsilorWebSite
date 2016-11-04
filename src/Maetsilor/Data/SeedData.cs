@@ -75,6 +75,7 @@ namespace Maetsilor.Data
 
         public static void AssossiateUsersRole()
         {
+
             IdentityUserRole<string>[] users_roles =
             {
                 new IdentityUserRole<string>()
@@ -86,6 +87,11 @@ namespace Maetsilor.Data
                 {
                     UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager1@test.ca").Id,
                     RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Modérateur").Id
+                },
+                new IdentityUserRole<string>()
+                {
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager2@test.ca").Id,
+                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Utilisateur").Id
                 }
 
 
