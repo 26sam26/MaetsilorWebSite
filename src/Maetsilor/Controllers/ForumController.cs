@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Maetsilor.Data;
 using Maetsilor.Models.ForumViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Maetsilor.Controllers
 {
+    [Authorize(Roles = "Utilisateur,Modérateur,Administrateur")]
     public class ForumController : Controller
     {
         private ApplicationDbContext _context = null;
