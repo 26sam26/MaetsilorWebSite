@@ -32,8 +32,12 @@ namespace Maetsilor.Controllers
         // GET: Forum/Details/5
         public ActionResult Details(int id)
         {
-            Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
-            return View(s);
+            List<Message> messages;
+            if (_context.Sujets.Where(s => s.ID == id).FirstOrDefault().Messages != null)
+                messages = _context.Sujets.Where(s => s.ID == id).FirstOrDefault().Messages.ToList();
+            else
+                messages = new List<Message>();
+            return View(messages);
         }
 
         // GET: Forum/Create

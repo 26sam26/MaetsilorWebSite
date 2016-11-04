@@ -16,7 +16,7 @@ namespace Maetsilor.Models
         {
             ID = appUser.Id;
             Email = appUser.Email;
-            Role = "That shit is fucked";//appUser.Claims.ToList().FirstOrDefault().ClaimValue;
+            Role = "That shit is fucked" ;//appUser.Claims.ToList().FirstOrDefault().ClaimValue;
         }
         public MembreViewModels()
         {
