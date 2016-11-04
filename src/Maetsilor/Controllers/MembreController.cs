@@ -65,11 +65,13 @@ namespace Maetsilor.Controllers
         // POST: Membre/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, IFormCollection collection)
         {
             try
             {
-               
+
+                ApplicationUser allo = _context.Users.Where(m => m.Id == id).Single();
+                //allo.InfoSup.DisplayName = collection.
 
                 return RedirectToAction("Index");
             }
@@ -88,12 +90,13 @@ namespace Maetsilor.Controllers
         // POST: Membre/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
+               _context.Remove(_context.Users.Where(m => m.Id == id).Single());
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
