@@ -43,11 +43,12 @@
         @foreach (var item in Model)
         {
             <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ID) Why you like showing ID and stuff?
+                </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titre)
+                    @*Faudrait arrengé ça. C'est quoi qui faut mettre pour avoir une page avec les Messages ? *@
+                    @Html.ActionLink(item.Titre, "I don't know whate the fuck", new { id = item.ID }) ; 
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
@@ -70,10 +71,10 @@
                 <td>
                     @if (User.IsInRole("Modérateur"))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) ;
                         @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                    };
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID });
+                    }
 
                 </td>
             </tr>
