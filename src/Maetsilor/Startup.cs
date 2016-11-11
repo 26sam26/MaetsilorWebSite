@@ -12,6 +12,10 @@ using Microsoft.Extensions.Logging;
 using Maetsilor.Data;
 using Maetsilor.Models;
 using Maetsilor.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace Maetsilor
 {
@@ -29,7 +33,7 @@ namespace Maetsilor
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
-            
+
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -47,7 +51,22 @@ namespace Maetsilor
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddLocalization(options => options.ResourcesPath = "/Resources/Resource");
+            services.AddMvc()
+             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+             .AddDataAnnotationsLocalization();
+            services.Configure<RequestLocalizationOptions>(
+ options =>
+ {
+     var supportedCultures = new[] {
+ new CultureInfo("en"),
+ new CultureInfo("fr"),
+ };
+     options.DefaultRequestCulture =
+    new RequestCulture(culture: "en", uiCulture: "en");
+     options.SupportedCultures = supportedCultures;
+     options.SupportedUICultures = supportedCultures;
+ });
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -75,6 +94,10 @@ namespace Maetsilor
 
             app.UseIdentity();
 
+            var locOptions =
+app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
+
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
@@ -88,6 +111,7 @@ namespace Maetsilor
             SeedData.InitialiserUsers();
             SeedData.InitialiserRoles();
             SeedData.AssossiateUsersRole();
+            SeedData.InitialiserForum();
         }
     }
 }

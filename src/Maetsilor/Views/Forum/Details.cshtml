@@ -1,46 +1,48 @@
-@model IEnumerable<Maetsilor.Models.ForumViewModels.Message>
+@using Maetsilor.Resources
+@model Maetsilor.Models.ForumViewModels.Sujet
 
 @{
     ViewData["Title"] = "Sujets";
 }
 
-<h2>Details</h2>
 
 @*<p>
     <a asp-action="Create">Create New</a> Faut changer de controlleur ici je pense. 
 </p>*@
-
+<h2>@Html.DisplayFor(model => model.Titre)</h2>
+<p>Description: @Html.DisplayFor(model => model.Description)</p>
 <table class="table">
     <thead>
         <tr>      
             <th>
-                @Html.DisplayNameFor(model => model.Auteur)
+                @Html.DisplayNameFor(model => model.Messages.FirstOrDefault().Auteur)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Texte)
+                @Html.DisplayNameFor(model => model.Messages.FirstOrDefault().Texte)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Auteur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Texte)
-            </td>
-            <td>
-                @if (User.IsInRole("Modérateur"))
+        @foreach (var item in Model.Messages)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Texte)
+                </td>
+                <td>
+                    @if (User.IsInRole("ModÃ©rateur"))
                 {
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID  }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID});
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID });
 
                 }
-               
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+

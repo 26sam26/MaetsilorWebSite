@@ -1,10 +1,11 @@
+@using Maetsilor.Resources
 @model IEnumerable<Maetsilor.Models.ForumViewModels.Sujet>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Forum</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -37,44 +38,39 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.ID) Why you like showing ID and stuff?
-                </td>*@
-                <td>
-                    @*Faudrait arrengé ça. C'est quoi qui faut mettre pour avoir une page avec les Messages ? *@
-                    @Html.ActionLink(item.Titre, "Details", new { id = item.ID }) ; 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Auteur)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateCreation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DerniereReponse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DernierRepondant)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NbReponse)
-                </td>
-                <td>
-                    @if (User.IsInRole("Modérateur"))
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Titre, "Details", new { id = item.ID }) ;
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Auteur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCreation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DerniereReponse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DernierRepondant)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NbReponse)
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Modérateur"))
                     {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) ;
-                        @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID });
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) ;
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID });
                     }
 
-                </td>
-            </tr>
-        }
+                    </td>
+                </tr>
+            }
     </tbody>
 </table>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Maetsilor.Controllers
 {
-    [Authorize(Roles = "Utilisateur,Modérateur,Administrateur")]
+    [Authorize(Roles = "Utilisateur,Moderateur,Administrateur")]
     public class ForumController : Controller
     {
         private ApplicationDbContext _context = null;
@@ -32,12 +32,9 @@ namespace Maetsilor.Controllers
         // GET: Forum/Details/5
         public ActionResult Details(int id)
         {
-            List<Message> messages;
-            if (_context.Sujets.Where(s => s.ID == id).FirstOrDefault().Messages != null)
-                messages = _context.Sujets.Where(s => s.ID == id).FirstOrDefault().Messages.ToList();
-            else
-                messages = new List<Message>();
-            return View(messages);
+            Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
+            if (s.Messages == null) s.Messages = new List<Message>();
+            return View(s);
         }
 
         // GET: Forum/Create
@@ -118,6 +115,27 @@ namespace Maetsilor.Controllers
             {
                 Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
                 _context.Sujets.Remove(s);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        
+
+        // POST: Forum/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMessage(int id, IFormCollection collection)
+        {
+            try
+            {
+                Sujet s = _context.Sujets.FirstOrDefault(su => su.ID == id);
+                Message m = new Message() { Auteur = HttpContext.User.Identity.Name.ToString(), Texte = "TEST" + s.Messages.Count() };
+                s.Messages.Add(m);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

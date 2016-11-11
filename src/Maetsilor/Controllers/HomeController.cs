@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
 
 namespace Maetsilor.Controllers
 {
@@ -41,7 +43,7 @@ namespace Maetsilor.Controllers
         }
 
 
-public IActionResult MatchMaking()
+        public IActionResult MatchMaking()
         {
             ViewData["Message"] = "MatchMaking section";
 
@@ -51,5 +53,21 @@ public IActionResult MatchMaking()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+            if(returnUrl !=null)
+                return LocalRedirect(returnUrl);
+
+            return LocalRedirect("~/Home/Index"); 
+        }
     }
+
 }
+
+

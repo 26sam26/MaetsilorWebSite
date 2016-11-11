@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Maetsilor.Resources
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,9 +29,8 @@
 
         #Logo {
             height: auto;
-            max-width:30%;
+            max-width: 30%;
         }
-        
     </style>
 </head>
 <body>
@@ -59,11 +59,11 @@
 
                     @if (User.Identity.IsAuthenticated && !User.IsInRole("ExclusionForum"))
                     {
-                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forum</a></li>
+                        <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forum</a></li>
                     }
                     @if (User.IsInRole("Administrateur"))
                     {
-                    <li><a asp-area="" asp-controller="Membre" asp-action="Index">Membre</a></li>
+                        <li><a asp-area="" asp-controller="Membre" asp-action="Index">Membre</a></li>
                     }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
@@ -73,9 +73,14 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2016 - Maetsilor</p>
-        </footer>
+        <div class="row">
+            <div class="col-md-6">
+                <p>&copy; 2016 - Maetsilor</p>
+            </div>
+            <div class="col-md-6 text-right">
+                @await Html.PartialAsync("_SelectLanguagePartial")
+            </div>
+        </div>
     </div>
 
     <environment names="Development">

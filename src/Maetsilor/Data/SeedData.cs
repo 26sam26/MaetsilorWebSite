@@ -1,4 +1,5 @@
 ﻿using Maetsilor.Models;
+using Maetsilor.Models.ForumViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
@@ -25,7 +26,7 @@ namespace Maetsilor.Data
             {
                 new IdentityRole {Name = "Administrateur"},
                 new IdentityRole {Name = "Utilisateur"},
-                new IdentityRole {Name = "Modérateur"},
+                new IdentityRole {Name = "Moderateur"},
                 new IdentityRole {Name = "ExclusionForum"},
                 new IdentityRole {Name = "Autre"}
             };
@@ -49,8 +50,8 @@ namespace Maetsilor.Data
             ApplicationUser[] appUsers = new ApplicationUser[]
             {
                  new ApplicationUser {Email = "admin@test.ca", PasswordHash = "Test123!" },
-                 new ApplicationUser {Email = "usager1@test.ca", PasswordHash = "Test123!" },
-                 new ApplicationUser {Email = "usager2@test.ca", PasswordHash = "Test123!" }
+                 new ApplicationUser {Email = "usager@test.ca", PasswordHash = "Test123!" },
+                 new ApplicationUser {Email = "moderateur@test.ca", PasswordHash = "Test123!" }
             };
 
             foreach (ApplicationUser u in appUsers)
@@ -75,8 +76,7 @@ namespace Maetsilor.Data
 
         public static void AssossiateUsersRole()
         {
-
-            IdentityUserRole<string>[] users_roles =
+            IdentityUserRole<string>[] usersRoles = new IdentityUserRole<string>[]
             {
                 new IdentityUserRole<string>()
                 {
@@ -85,25 +85,29 @@ namespace Maetsilor.Data
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager1@test.ca").Id,
-                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Modérateur").Id
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "moderateur@test.ca").Id,
+                    RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Moderateur").Id
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager2@test.ca").Id,
+                    UserId = Context.Users.FirstOrDefault(u=> u.Email == "usager@test.ca").Id,
                     RoleId = Context.Roles.FirstOrDefault(r=>r.Name == "Utilisateur").Id
                 }
-
-
             };
 
-            foreach (IdentityUserRole<string> ur in users_roles)
+            foreach (IdentityUserRole<string> ur in usersRoles)
             {
                 if (!Context.UserRoles.Any(d => d.UserId == ur.UserId && d.RoleId == ur.RoleId))
                 {
                     Context.UserRoles.Add(ur);
                 }
             }
+            Context.SaveChanges();
+        }
+        public static void InitialiserForum()
+        {
+            Sujet s = new Sujet() { NbReponse = 0, Titre = "Bienvenu!", DateCreation = DateTime.Now, Description = "Bienvenu au nouveaux Membres!" };
+            Context.Sujets.Add(s);
             Context.SaveChanges();
         }
     }
