@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maetsilor.Resources {
+namespace Maetsilor {
     using System;
     using System.Reflection;
     
@@ -38,7 +38,7 @@ namespace Maetsilor.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maetsilor.Resources.Resource", typeof(Resource).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maetsilor.Resource", typeof(Resource).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

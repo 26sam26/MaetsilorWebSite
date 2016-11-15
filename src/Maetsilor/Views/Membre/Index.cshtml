@@ -2,39 +2,28 @@
 
 @{
     ViewData["Title"] = "Index";
+    SelectList liste = new SelectList(new List<string> { "Id", "Email" });
 }
-
+@section scripts {
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    </environment>
+}
 <h2>Index</h2>
 
 <p>
     To create a new User please use the Register functionality. 
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Role)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) 
-                @Html.ActionLink("Delete", "Delete", new {  id=item.ID })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<form asp-action="Index" class="form-inline"
+      data-ajax="true"
+      data-ajax-method="GET"
+      data-ajax-mode="replace"
+      data-ajax-update=".listMembre">
+    <input name="motrecherche" class="form-control" type="text">
+    <select name="champ" asp-items="@liste" class="form-control"></select>
+    <input type="submit" value="Rechercher" class="btn btn-default btn-primary" />
+</form>
+

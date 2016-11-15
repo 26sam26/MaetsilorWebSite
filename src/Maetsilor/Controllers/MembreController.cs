@@ -17,14 +17,18 @@ namespace Maetsilor.Controllers
             _context = context;
         }
         // GET: Membre
-        public ActionResult Index()
+        public ActionResult Index(string OrdreTri = null, string searchTerm = null, string searchField = null, int page = 1)
         {
             List<Membre> lmvm = new List<Membre>();
             foreach(ApplicationUser appUser in _context.Users)
             {
                lmvm.Add(new Membre(appUser));
             }
-            return View(lmvm);
+
+            if (HttpContext.Request.IsAjaxRequest())
+                return PartialView("_IndexPartial", lmvm);
+            else
+                return View(lmvm);
         }
 
         // GET: Membre/Details/5
