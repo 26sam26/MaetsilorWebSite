@@ -25,7 +25,7 @@ namespace Maetsilor.Controllers
                lmvm.Add(new Membre(appUser));
             }
 
-            if (HttpContext.Request.IsAjaxRequest())
+            if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest") //magie :)
                 return PartialView("_IndexPartial", lmvm);
             else
                 return View(lmvm);
