@@ -9,3 +9,5 @@ src/Maetsilor/obj/Debug/netcoreapp1.0/dotnet-compile-csc.rsp
 src/Maetsilor/obj/Debug/netcoreapp1.0/dotnet-compile.assemblyinfo.cs
 src/Maetsilor/obj/Debug/netcoreapp1.0/dotnet-compile.rsp
 Maetsilor.VC.db
+src/Maetsilor/obj/*
+src/Maetsilor/bin/*
