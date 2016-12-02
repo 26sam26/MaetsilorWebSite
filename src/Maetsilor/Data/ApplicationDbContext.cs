@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Maetsilor.Models;
 using Maetsilor.Models.ForumViewModels;
+using Maetsilor.Models.MatchMakingViewModel;
 
 namespace Maetsilor.Data
 {
@@ -14,6 +15,9 @@ namespace Maetsilor.Data
         public DbSet<Sujet> Sujets { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<AspNetUsersInfoSup> InfoSups { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Partie> Parties { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

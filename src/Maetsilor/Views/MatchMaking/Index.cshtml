@@ -1,0 +1,72 @@
+@model IEnumerable<Maetsilor.Models.MatchMakingViewModel.Group>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDePartie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxDeJoueur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinDeJoueur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaitreDuJeu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDePartie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxDeJoueur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinDeJoueur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaitreDuJeu)
+                </td>
+                <td>
+                    <form asp-action="Join">
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Join" class="btn btn-default" />
+                        </div>
+                    </form>
+                    @if (User.IsInRole("Modérateur"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
