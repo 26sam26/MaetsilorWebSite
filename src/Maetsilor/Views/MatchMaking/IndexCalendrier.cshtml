@@ -1,0 +1,54 @@
+@model IEnumerable<Maetsilor.Models.MatchMakingViewModel.Partie>
+
+@{
+    ViewData["Title"] = "IndexCalendrier";
+}
+
+<h2>Calendrier</h2>
+
+<p>
+     <a asp-action="CreatePartie" asp-route-id="@ViewData["GroupID"]">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if (ViewData["GroupMaster"].ToString() == User.Identity.Name)
+                    {
+                        <form asp-action="CancelPartie" asp-route-id="@ViewData["GroupID"]" asp-route-partieId="@item.ID">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Cancel" class="btn btn-default" /> 
+                            </div>
+                        </form>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

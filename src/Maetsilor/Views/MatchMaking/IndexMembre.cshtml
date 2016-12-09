@@ -1,0 +1,45 @@
+@model IEnumerable<Maetsilor.Models.Membre>
+
+@{
+    ViewData["Title"] = "IndexMembre";
+}
+
+<h2>Membre du Groupe</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (User.Identity.Name == ViewData["GroupMaster"].ToString() && User.Identity.Name ==)
+                    {
+                        <form asp-action="KickMember" asp-route-id="@ViewData["GroupId"]" asp-route-memberId="@item.ID">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Kick" class="btn btn-default" /> 
+                            </div>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        @Html.ActionLink("Retour", "Details", new { id = ViewData["GroupId"] })
+    </tbody>
+</table>

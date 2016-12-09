@@ -4,16 +4,18 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.Nom) 
-    (@Html.DisplayFor(model => model.TypeDePartie), 
+<h2>
+    @Html.DisplayFor(model => model.Nom)
+    (@Html.DisplayFor(model => model.TypeDePartie),
     @Html.DisplayFor(model => model.MinDeJoueur)-
-    @Html.DisplayFor(model => model.MaxDeJoueur))</h2>
+    @Html.DisplayFor(model => model.MaxDeJoueur))
+</h2>
 
 <div>
     <h4>@Html.DisplayFor(model => model.Description)</h4>
     <hr />
     <dl class="dl-horizontal">
-        
+
         <dt>
             @Html.DisplayNameFor(model => model.Nom)
         </dt>
@@ -53,10 +55,16 @@
     </dl>
 </div>
 <div>
-    @if (Model.MaitreDuJeu == User.Identity.Name)
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
-    }
-  
-    <a asp-action="Index">Back to List</a>
+    <ul>
+        @if (Model.MaitreDuJeu == User.Identity.Name)
+        {
+            <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</li>
+        }
+
+        <li>@Html.ActionLink("Membres", "IndexMembre", new { id = Model.ID })</li>
+        <li>@Html.ActionLink("Demandes", "IndexDemandes", new { id = Model.ID })</li>
+        <li>@Html.ActionLink("Chat", "Chat", new { id = Model.ID })</li>
+        <li>@Html.ActionLink("Calendrier", "IndexCalendrier", new { id = Model.ID })</li>
+        <li><a asp-action="IndexUserGroups"> Back to List</a></li>
+    </ul>
 </div>

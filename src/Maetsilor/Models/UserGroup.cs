@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Maetsilor.Models.MatchMakingViewModel
+namespace Maetsilor.Models
 {
-    public class Partie
+    public class UserGroup
     {
         public int ID { get; set; }
-        public DateTime Date { get; set; }
-        public string Description { get; set; }
+        public string UserID { get; set; }
         public int GroupID { get; set; }
+        public bool IsMember { get; set; }
     }
 }

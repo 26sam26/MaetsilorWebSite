@@ -11,5 +11,6 @@ namespace Maetsilor.Models.MatchMakingViewModel
         public DateTime Date { get; set; }
         public string Auteur { get; set; }
         public string Message { get; set; }
+        public int GroupID { get; set; }
     }
 }

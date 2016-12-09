@@ -113,6 +113,7 @@ app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             SeedData.AssossiateUsersRole();
             SeedData.InitialiserForum();
             SeedData.Context.Database.Migrate();
+            SeedData.InitialiserGroup();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Maetsilor.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Auteur = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    GroupID = table.Column<int>(nullable: true),
+                    GroupID = table.Column<int>(nullable: false),
                     Message = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -46,7 +46,7 @@ namespace Maetsilor.Migrations
                         column: x => x.GroupID,
                         principalTable: "Groups",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +57,7 @@ namespace Maetsilor.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    GroupID = table.Column<int>(nullable: true)
+                    GroupID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,7 @@ namespace Maetsilor.Migrations
                         column: x => x.GroupID,
                         principalTable: "Groups",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.AddColumn<int>(

@@ -8,7 +8,7 @@ using Maetsilor.Data;
 namespace Maetsilor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161201151824_matchmaking")]
+    [Migration("20161206183636_matchmaking")]
     partial class matchmaking
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,7 +145,7 @@ namespace Maetsilor.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("GroupID");
+                    b.Property<int>("GroupID");
 
                     b.Property<string>("Message");
 
@@ -187,7 +187,7 @@ namespace Maetsilor.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("GroupID");
+                    b.Property<int>("GroupID");
 
                     b.HasKey("ID");
 
@@ -329,14 +329,16 @@ namespace Maetsilor.Migrations
                 {
                     b.HasOne("Maetsilor.Models.MatchMakingViewModel.Group")
                         .WithMany("Chat")
-                        .HasForeignKey("GroupID");
+                        .HasForeignKey("GroupID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Maetsilor.Models.MatchMakingViewModel.Partie", b =>
                 {
                     b.HasOne("Maetsilor.Models.MatchMakingViewModel.Group")
                         .WithMany("Calendrier")
-                        .HasForeignKey("GroupID");
+                        .HasForeignKey("GroupID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

@@ -18,6 +18,7 @@ namespace Maetsilor.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<Partie> Parties { get; set; }
         public DbSet<ChatMessage> ChatMessages { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -1,5 +1,6 @@
 ﻿using Maetsilor.Models;
 using Maetsilor.Models.ForumViewModels;
+using Maetsilor.Models.MatchMakingViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
@@ -102,6 +103,45 @@ namespace Maetsilor.Data
                     Context.UserRoles.Add(ur);
                 }
             }
+            Context.SaveChanges();
+        }
+        public static void InitialiserGroup()
+        {
+            Group g = new Group();
+            g.MaitreDuJeu = "admin@test.ca";
+            g.MaxDeJoueur = 6;
+            g.MinDeJoueur = 2;
+            g.Nom = "First Game ever";
+            g.Description = "Groupe pour ceux qui jouent pour la première fois!";
+            g.TypeDePartie = "D&D 3.5";
+
+            if (!Context.Groups.Any(d => d.Nom == g.Nom))
+            {
+                Context.Groups.Add(g);
+
+
+                Context.SaveChanges();
+                List<UserGroup> ug = new List<UserGroup>()
+                {
+                    new UserGroup() {GroupID = g.ID, UserID =  Context.Users.FirstOrDefault(u => u.Email == "admin@test.ca").Id, IsMember = true},
+                    new UserGroup() {GroupID = g.ID, UserID =  Context.Users.FirstOrDefault(u => u.Email == "moderateur@test.ca").Id, IsMember = true},
+                    new UserGroup() {GroupID = g.ID, UserID =  Context.Users.FirstOrDefault(u => u.Email == "usager@test.ca").Id, IsMember = false}
+                };
+                Context.AddRange(ug);
+                g.Chat = new List<ChatMessage>()
+                {
+                    new ChatMessage() {Message= "Allo", Auteur = "admin@test.ca" , GroupID=g.ID, Date = DateTime.UtcNow },
+                    new ChatMessage() {Message= "Allo", Auteur = "moderateur@test.ca" , GroupID=g.ID, Date = DateTime.UtcNow },
+                    new ChatMessage() {Message= "Allo", Auteur = "admin@test.ca" , GroupID=g.ID, Date = DateTime.UtcNow },
+                    new ChatMessage() {Message= "Allo", Auteur = "moderateur@test.ca" , GroupID=g.ID, Date = DateTime.UtcNow }
+                };
+                g.Calendrier = new List<Partie>()
+                {
+                    new Partie() {GroupID =g.ID, Date = DateTime.Now,Description="L'adresse c'est 127.54.123.233, soyez pas en retard"},
+                    new Partie() {GroupID=g.ID, Date = DateTime.Now,Description="L'adresse c'est 192.128.254.128, soyez en retard xD!!"}
+                };
+            }
+
             Context.SaveChanges();
         }
         public static void InitialiserForum()
