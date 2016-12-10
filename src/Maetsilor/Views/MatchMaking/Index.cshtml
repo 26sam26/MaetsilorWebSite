@@ -2,33 +2,34 @@
 
 @{
     ViewData["Title"] = "Index";
+    List<int> userGroups = ViewData["UserGroups"] as List<int>;
 }
 
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Resource.CreateGroup</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                @Resource.Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeDePartie)
+                @Resource.TypeOfGame
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxDeJoueur)
+                @Resource.MaxPlayer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MinDeJoueur)
+                @Resource.MinPlayer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaitreDuJeu)
+                @Resource.GameMaster
             </th>
             <th></th>
         </tr>
@@ -55,17 +56,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.MaitreDuJeu)
                 </td>
+
                 <td>
+                    @if(!userGroups.Contains(item.ID))
+                    {
                     <form asp-action="Join">
                         <div class="form-actions no-color">
-                            <input type="submit" value="Join" class="btn btn-default" />
+                            <input type="submit" value="@Resource.Join" class="btn btn-default" />
                         </div>
                     </form>
+                    }
                     @if (User.IsInRole("Moderateur"))
                     {
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        @Html.ActionLink(@Resource.Delete, "Delete", new { id = item.ID })
                     }
                 </td>
+
             </tr>
         }
     </tbody>

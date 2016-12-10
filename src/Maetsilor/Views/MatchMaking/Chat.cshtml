@@ -5,19 +5,18 @@
 }
 
 <h2>Chat</h2>
-<table class="table">
+<table class="table"   style="background-color:white;color:black;" >
     <thead>
         <tr>
             <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.Message)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr style="border:none">
             <td>
                 @Html.DisplayFor(modelItem => item.Auteur):
             </td>
@@ -30,9 +29,11 @@
 }
         
     </tbody>
+    
+    @Html.ActionLink(Resource.Back, "Details", new { id = ViewData["GroupId"] })
     <p>
-        @Html.ActionLink("Reply", "ChatReply", new { id = ViewData["GroupId"] })
+        @Html.ActionLink(Resource.Reply, "ChatReply", new { id = ViewData["GroupId"] })
     </p>
 
-    @Html.ActionLink("Retour", "Details", new { id = ViewData["GroupId"] })
+   
 </table>

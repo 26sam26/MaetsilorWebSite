@@ -8,7 +8,6 @@
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Membre</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -27,14 +26,14 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@Resource.Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Resource.Back</a>
 </div>
 
 @section Scripts {

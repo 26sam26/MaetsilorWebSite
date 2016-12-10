@@ -14,9 +14,6 @@
 }
 <h2>Index</h2>
 
-<p>
-    To create a new User please use the Register functionality. 
-</p>
 <form asp-action="Index" class="form-inline"
       data-ajax="true"
       data-ajax-method="GET"
@@ -24,6 +21,6 @@
       data-ajax-update=".listMembre">
     <input name="motrecherche" class="form-control" type="text">
     <select name="champ" asp-items="@liste" class="form-control"></select>
-    <input type="submit" value="Rechercher" class="btn btn-default btn-primary" />
+    <input type="submit" value="@Resource.Search" class="btn btn-default btn-primary" />
 </form>
 

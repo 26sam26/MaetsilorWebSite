@@ -4,8 +4,10 @@
     ViewData["Title"] = "CreatePartie";
 }
 
-<h2>Create Partie</h2>
-
+<h2>@Resource.ScheduleGame</h2>
+<div>
+    <a asp-action="IndexCalendrier" asp-route-id="@ViewData["GroupId"]">@Resource.Back</a>
+</div>
 <form asp-action="CreatePartie" asp-route-id="@ViewData["GroupID"]">
     <div class="form-horizontal">
         <hr />
@@ -26,15 +28,13 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@Resource.Confirm" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>@Resource.CreatePost</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
@@ -12,7 +12,7 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Titre" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">@Resource.Title</label>
             <div class="col-md-10">
                 <input asp-for="Titre" class="form-control" />
                 <span asp-validation-for="Titre" class="text-danger" />
@@ -34,14 +34,14 @@
         </div>*@       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@Resource.Send" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Resource.Back</a>
 </div>
 
 @section Scripts {

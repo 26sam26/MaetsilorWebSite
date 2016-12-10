@@ -14,45 +14,6 @@
 <div>
     <h4>@Html.DisplayFor(model => model.Description)</h4>
     <hr />
-    <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeDePartie)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TypeDePartie)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MaxDeJoueur)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MaxDeJoueur)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MinDeJoueur)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MinDeJoueur)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MaitreDuJeu)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MaitreDuJeu)
-        </dd>
-    </dl>
 </div>
 <div>
     <ul>
@@ -61,10 +22,10 @@
             <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</li>
         }
 
-        <li>@Html.ActionLink("Membres", "IndexMembre", new { id = Model.ID })</li>
-        <li>@Html.ActionLink("Demandes", "IndexDemandes", new { id = Model.ID })</li>
+        <li>@Html.ActionLink(Resource.Members, "IndexMembre", new { id = Model.ID })</li>
+        <li>@Html.ActionLink(Resource.Requests, "IndexDemandes", new { id = Model.ID })</li>
         <li>@Html.ActionLink("Chat", "Chat", new { id = Model.ID })</li>
-        <li>@Html.ActionLink("Calendrier", "IndexCalendrier", new { id = Model.ID })</li>
-        <li><a asp-action="IndexUserGroups"> Back to List</a></li>
+        <li>@Html.ActionLink(Resource.Schedule, "IndexCalendrier", new { id = Model.ID })</li>
+        <li><a asp-action="IndexUserGroups"> @Resource.Back</a></li>
     </ul>
 </div>

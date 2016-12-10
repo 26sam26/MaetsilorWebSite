@@ -96,11 +96,101 @@ namespace Maetsilor {
         }
         
         /// <summary>
+        ///    Recherche une chaîne localisée similaire à Accept.
+        /// </summary>
+        public static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Author.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Recherche une chaîne localisée similaire à Back.
         /// </summary>
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Are you sure you want to delete this?.
+        /// </summary>
+        public static string ConfirmDelete {
+            get {
+                return ResourceManager.GetString("ConfirmDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Confirm Password.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Create a Group.
+        /// </summary>
+        public static string CreateGroup {
+            get {
+                return ResourceManager.GetString("CreateGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Create Post.
+        /// </summary>
+        public static string CreatePost {
+            get {
+                return ResourceManager.GetString("CreatePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Decline.
+        /// </summary>
+        public static string Decline {
+            get {
+                return ResourceManager.GetString("Decline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
@@ -128,6 +218,15 @@ namespace Maetsilor {
         public static string ErrorMessage {
             get {
                 return ResourceManager.GetString("ErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Forgot your password?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
             }
         }
         
@@ -168,6 +267,24 @@ namespace Maetsilor {
         }
         
         /// <summary>
+        ///    Recherche une chaîne localisée similaire à Game Master.
+        /// </summary>
+        public static string GameMaster {
+            get {
+                return ResourceManager.GetString("GameMaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Hello.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Recherche une chaîne localisée similaire à Home.
         /// </summary>
         public static string Home {
@@ -186,11 +303,128 @@ namespace Maetsilor {
         }
         
         /// <summary>
+        ///    Recherche une chaîne localisée similaire à Join.
+        /// </summary>
+        public static string Join {
+            get {
+                return ResourceManager.GetString("Join", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Kick.
+        /// </summary>
+        public static string Kick {
+            get {
+                return ResourceManager.GetString("Kick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Last Answer.
+        /// </summary>
+        public static string LastAnswer {
+            get {
+                return ResourceManager.GetString("LastAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Last Replier.
+        /// </summary>
+        public static string LastReplier {
+            get {
+                return ResourceManager.GetString("LastReplier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Log in.
+        /// </summary>
+        public static string LogIn {
+            get {
+                return ResourceManager.GetString("LogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Log off.
+        /// </summary>
+        public static string LogOff {
+            get {
+                return ResourceManager.GetString("LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Recherche une chaîne localisée similaire à Matchmaking.
         /// </summary>
         public static string MatchMaking {
             get {
                 return ResourceManager.GetString("MatchMaking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Maximum of player.
+        /// </summary>
+        public static string MaxPlayer {
+            get {
+                return ResourceManager.GetString("MaxPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Members.
+        /// </summary>
+        public static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Minimum of player.
+        /// </summary>
+        public static string MinPlayer {
+            get {
+                return ResourceManager.GetString("MinPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à My Groups.
+        /// </summary>
+        public static string MyGroups {
+            get {
+                return ResourceManager.GetString("MyGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Answer count.
+        /// </summary>
+        public static string NbAnswer {
+            get {
+                return ResourceManager.GetString("NbAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
@@ -204,11 +438,119 @@ namespace Maetsilor {
         }
         
         /// <summary>
+        ///    Recherche une chaîne localisée similaire à Register.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Remember me.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Reply.
+        /// </summary>
+        public static string Reply {
+            get {
+                return ResourceManager.GetString("Reply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Requests.
+        /// </summary>
+        public static string Requests {
+            get {
+                return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Schedule.
+        /// </summary>
+        public static string Schedule {
+            get {
+                return ResourceManager.GetString("Schedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Shedule a Game.
+        /// </summary>
+        public static string ScheduleGame {
+            get {
+                return ResourceManager.GetString("ScheduleGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Schedule a new game.
+        /// </summary>
+        public static string ScheduleNewGame {
+            get {
+                return ResourceManager.GetString("ScheduleNewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Recherche une chaîne localisée similaire à Team.
         /// </summary>
         public static string Team {
             get {
                 return ResourceManager.GetString("Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Recherche une chaîne localisée similaire à Type of game.
+        /// </summary>
+        public static string TypeOfGame {
+            get {
+                return ResourceManager.GetString("TypeOfGame", resourceCulture);
             }
         }
     }

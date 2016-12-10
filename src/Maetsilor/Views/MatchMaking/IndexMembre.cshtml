@@ -4,14 +4,11 @@
     ViewData["Title"] = "IndexMembre";
 }
 
-<h2>Membre du Groupe</h2>
+<h2>@Resource.Members</h2>
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
@@ -23,23 +20,20 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @if (User.Identity.Name == ViewData["GroupMaster"].ToString() && User.Identity.Name ==)
+                    @if (User.Identity.Name == ViewData["GroupMaster"].ToString() && User.Identity.Name != item.Email)
                     {
                         <form asp-action="KickMember" asp-route-id="@ViewData["GroupId"]" asp-route-memberId="@item.ID">
                             <div class="form-actions no-color">
-                                <input type="submit" value="Kick" class="btn btn-default" /> 
+                                <input type="submit" value="@Resource.Kick" class="btn btn-default" /> 
                             </div>
                         </form>
                     }
                 </td>
             </tr>
         }
-        @Html.ActionLink("Retour", "Details", new { id = ViewData["GroupId"] })
+        @Html.ActionLink(@Resource.Back, "Details", new { id = ViewData["GroupId"] })
     </tbody>
 </table>

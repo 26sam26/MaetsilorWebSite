@@ -15,10 +15,10 @@
     <thead>
         <tr>      
             <th>
-                @Html.DisplayNameFor(model => model.Messages.FirstOrDefault().Auteur)
+                @Resource.Author
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Messages.FirstOrDefault().Texte)
+                Message
             </th>
             <th></th>
         </tr>
@@ -34,10 +34,10 @@
                     @Html.DisplayFor(modelItem => item.Texte)
                 </td>
                 <td>
-                    @if (User.IsInRole("Modérateur"))
+                    @if (User.IsInRole("Moderateur"))
                 {
                         @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ID });
+                        @Html.ActionLink(@Resource.Delete , "Delete", new { id = item.ID });
 
                 }
                 </td>

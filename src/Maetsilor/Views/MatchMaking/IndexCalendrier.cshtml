@@ -5,16 +5,15 @@
 }
 
 <h2>Calendrier</h2>
-
+<div>
+    <a asp-action="Details" asp-route-id="@ViewData["GroupId"]">@Resource.Back</a>
+</div>
 <p>
-     <a asp-action="CreatePartie" asp-route-id="@ViewData["GroupID"]">Create New</a>
+     <a asp-action="CreatePartie" asp-route-id="@ViewData["GroupID"]">@Resource.ScheduleNewGame</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
@@ -29,9 +28,6 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
@@ -42,7 +38,7 @@
                     {
                         <form asp-action="CancelPartie" asp-route-id="@ViewData["GroupID"]" asp-route-partieId="@item.ID">
                             <div class="form-actions no-color">
-                                <input type="submit" value="Cancel" class="btn btn-default" /> 
+                                <input type="submit" value="@Resource.Cancel" class="btn btn-default" /> 
                             </div>
                         </form>
                     }

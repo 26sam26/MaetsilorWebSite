@@ -59,12 +59,12 @@
                     @if (User.Identity.IsAuthenticated && !User.IsInRole("ExclusionForum"))
                     {
                         <li><a asp-area="" asp-controller="MatchMaking" asp-action="Index">@Resource.MatchMaking</a></li>
-                        <li><a asp-area="" asp-controller="MatchMaking" asp-action="IndexUserGroups">My Groups</a></li>
+                        <li><a asp-area="" asp-controller="MatchMaking" asp-action="IndexUserGroups">@Resource.MyGroups</a></li>
                         <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forum</a></li>
                     }
                     @if (User.IsInRole("Administrateur"))
                     {
-                        <li><a asp-area="" asp-controller="Membre" asp-action="Index">Membre</a></li>
+                        <li><a asp-area="" asp-controller="Membre" asp-action="Index">@Resource.Members</a></li>
                     }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")

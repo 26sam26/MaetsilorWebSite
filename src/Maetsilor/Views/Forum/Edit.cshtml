@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Titre" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label"> @Resource.Title</label>
             <div class="col-md-10">
                 <input asp-for="Titre" class="form-control" />
                 <span asp-validation-for="Titre" class="text-danger" />
@@ -33,35 +33,35 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Auteur" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label">@Resource.Author</label>
             <div class="col-md-10">
                 <input asp-for="Auteur" class="form-control" />
                 <span asp-validation-for="Auteur" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DateCreation" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">Date</label>
             <div class="col-md-10">
                 <input asp-for="DateCreation" class="form-control" />
                 <span asp-validation-for="DateCreation" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DerniereReponse" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label">@Resource.LastAnswer</label>
             <div class="col-md-10">
                 <input asp-for="DerniereReponse" class="form-control" />
                 <span asp-validation-for="DerniereReponse" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DernierRepondant" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">@Resource.LastReplier</label>
             <div class="col-md-10">
                 <input asp-for="DernierRepondant" class="form-control" />
                 <span asp-validation-for="DernierRepondant" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NbReponse" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label">@Resource.NbAnswer</label>
             <div class="col-md-10">
                 <input asp-for="NbReponse" class="form-control" />
                 <span asp-validation-for="NbReponse" class="text-danger" />
@@ -69,14 +69,14 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@Resource.Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Resource.Back</a>
 </div>
 
 @section Scripts {

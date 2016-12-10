@@ -4,21 +4,14 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>@Resource.Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Resource.ConfirmDelete</h3>
 <div>
-    <h4>Group</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Resource.Name
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nom)
@@ -30,25 +23,25 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TypeDePartie)
+            @Resource.TypeOfGame
         </dt>
         <dd>
             @Html.DisplayFor(model => model.TypeDePartie)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.MaxDeJoueur)
+            @Resource.MaxPlayer
         </dt>
         <dd>
             @Html.DisplayFor(model => model.MaxDeJoueur)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.MinDeJoueur)
+            @Resource.MinPlayer
         </dt>
         <dd>
             @Html.DisplayFor(model => model.MinDeJoueur)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.MaitreDuJeu)
+            @Resource.GameMaster
         </dt>
         <dd>
             @Html.DisplayFor(model => model.MaitreDuJeu)
@@ -57,7 +50,7 @@
     
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="@Resource.Delete" class="btn btn-default" /> |
             <a asp-action="IndexUserGroups">Back to List</a>
         </div>
     </form>

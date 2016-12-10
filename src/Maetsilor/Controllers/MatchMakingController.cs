@@ -26,7 +26,17 @@ namespace Maetsilor.Controllers
         // GET: MatchMaking
         public ActionResult Index()
         {
+            ApplicationUser user = _context.Users.First(u => u.UserName == HttpContext.User.Identity.Name);
             List<Group> groups = _context.Groups.ToList();
+            List<int> userGroups = new List<int>();
+            foreach(Group g in groups)
+            {
+                if(_context.UserGroups.Any(ug => ug.GroupID == g.ID && ug.UserID == user.Id))
+                {
+                    userGroups.Add(g.ID);
+                }
+            }
+            ViewData["UserGroups"] = userGroups;
             return View(groups);
         }
 
@@ -151,14 +161,13 @@ namespace Maetsilor.Controllers
         {
             Group g = _context.Groups.FirstOrDefault(gr => gr.ID == id);
             ViewData["GroupID"] = id;
-            ViewData["GroupMaster"] = g.MaitreDuJeu;
             return View();
         }
 
         // POST: MatchMaking/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChatReply(int id, ChatMessage reply)
+        public ActionResult ChatReply(ChatMessage reply)
         {
             try
             {
@@ -167,20 +176,15 @@ namespace Maetsilor.Controllers
                 {
                     return View("Error");
                 }
-                Group g = _context.Groups.FirstOrDefault(gr => gr.ID == id);
-                if (g == null)
-                {
-                    return View("Error");
-                }
-                ChatMessage m = reply;
+                ChatMessage m = new ChatMessage();
 
                 m.Auteur = user.ToString();
                 m.Date = DateTime.UtcNow;
-                m.Message = m.Auteur + ": " + m.Message;
-                m.GroupID = g.ID;
-                _context.Add(m);
+                m.Message =  reply.Message;
+                m.GroupID = reply.ID;
+                _context.ChatMessages.Add(m);
                 _context.SaveChanges();
-                return RedirectToAction("Chat", new { id = id });
+                return RedirectToAction("Chat", new { id = reply.ID });
             }
             catch
             {
@@ -230,7 +234,7 @@ namespace Maetsilor.Controllers
 
                 Group g = _context.Groups.Where(gr => gr.ID == id).Single();
                 _context.Groups.Remove(g);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexUserGroups");
             }
             catch
@@ -256,7 +260,7 @@ namespace Maetsilor.Controllers
                 ug.UserID = user.Id;
                 ug.IsMember = false;
                 _context.Add(ug);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -274,7 +278,7 @@ namespace Maetsilor.Controllers
             {
                 UserGroup ug = _context.UserGroups.FirstOrDefault(u => u.GroupID == id && u.UserID == memberId);
                 _context.Remove(ug);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexMembre", new { id = id });
             }
             catch
@@ -310,7 +314,7 @@ namespace Maetsilor.Controllers
             try
             {
                 _context.Remove(partie);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexCalendrier", new { id = id });
             }
             catch
@@ -327,7 +331,7 @@ namespace Maetsilor.Controllers
             {
                 UserGroup ug = _context.UserGroups.FirstOrDefault(u => u.GroupID == id && u.UserID == memberId);
                 _context.Remove(ug);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexDemandes", new { id = id });
             }
             catch
@@ -345,7 +349,7 @@ namespace Maetsilor.Controllers
                 UserGroup ug = _context.UserGroups.FirstOrDefault(u => u.GroupID == id && u.UserID == memberId);
                 ug.IsMember = true;
                 _context.Update(ug);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexDemandes", new { id = id });
             }
             catch
@@ -371,7 +375,7 @@ namespace Maetsilor.Controllers
                 p.Description = partie.Description;
                 p.GroupID = id;
                 _context.Parties.Add(p);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction("IndexCalendrier", new { id = id });
             }
             catch

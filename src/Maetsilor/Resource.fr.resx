@@ -163,9 +163,123 @@
     <value>Notre Équipe</value>
   </data>
   <data name="MatchMaking" xml:space="preserve">
-    <value>Recherche de partenaires</value>
+    <value>Recherche partenaires</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Retour</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Répondre</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="CreateGroup" xml:space="preserve">
+    <value>Créez un Groupe</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="TypeOfGame" xml:space="preserve">
+    <value>Type de partie</value>
+  </data>
+  <data name="MaxPlayer" xml:space="preserve">
+    <value>Maximum de joueur</value>
+  </data>
+  <data name="MinPlayer" xml:space="preserve">
+    <value>Minimum de joueur</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="ScheduleGame" xml:space="preserve">
+    <value>Planifier une Partie</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Êtes-vous certain de vouloir supprimer ceci?</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="GameMaster" xml:space="preserve">
+    <value>Maitre du jeu</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Membres</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Demandes</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Calendrier</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Rejoindre</value>
+  </data>
+  <data name="ScheduleNewGame" xml:space="preserve">
+    <value>Planifier une nouvelle partie</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accepter</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Refuser</value>
+  </data>
+  <data name="Kick" xml:space="preserve">
+    <value>Bannir</value>
+  </data>
+  <data name="MyGroups" xml:space="preserve">
+    <value>Mes Groupes</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Déconnection</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titre</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="LastAnswer" xml:space="preserve">
+    <value>Dernière Réponse</value>
+  </data>
+  <data name="LastReplier" xml:space="preserve">
+    <value>Dernier Répondant</value>
+  </data>
+  <data name="NbAnswer" xml:space="preserve">
+    <value>Nombre de réponse</value>
+  </data>
+  <data name="CreatePost" xml:space="preserve">
+    <value>Création de Post</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Rester connecté</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Avez vous oublié votre mot de passe?</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmer Mot de passe</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>-</value>
   </data>
 </root>

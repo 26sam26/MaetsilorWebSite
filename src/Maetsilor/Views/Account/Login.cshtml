@@ -8,12 +8,12 @@
     ViewData["Title"] = "Log in";
 }
 
-<h2>@ViewData["Title"].</h2>
+<h2>@Resource.LogIn</h2>
 <div class="row">
     <div class="col-md-8">
         <section>
             <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                <h4>Use a local account to log in.</h4>
+                
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Password" class="col-md-2 control-label"></label>
+                    <label class="col-md-2 control-label">@Resource.Password</label>
                     <div class="col-md-10">
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
@@ -33,23 +33,24 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
-                            <label asp-for="RememberMe">
+                            <label>
+                               
                                 <input asp-for="RememberMe" />
-                                @Html.DisplayNameFor(m => m.RememberMe)
+                                @Resource.RememberMe
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-default">Log in</button>
+                        <button type="submit" class="btn btn-default">@Resource.LogIn</button>
                     </div>
                 </div>
                 <p>
-                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">@Resource.Register</a>
                 </p>
                 <p>
-                    <a asp-action="ForgotPassword">Forgot your password?</a>
+                    <a asp-action="Error" asp-controller="Home">@Resource.ForgotPassword</a>
                 </p>
             </form>
         </section>

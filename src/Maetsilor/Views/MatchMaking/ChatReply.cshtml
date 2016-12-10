@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "ChatReply";
 }
-
-<h2>ChatReply</h2>
-
-<form asp-action="ChatReply">
+<h2>Chat</h2>
+<div>
+    <a asp-action="Chat" asp-route-id="@ViewData["GroupId"]">@Resource.Back</a>
+</div>
+<form asp-action="ChatReply" asp-route-id="@ViewData["GroupId"]">
     <div class="form-horizontal">
         
         <hr />
@@ -17,18 +18,18 @@
                 <input asp-for="Message" class="form-control" />
                 <span asp-validation-for="Message" class="text-danger" />
             </div>
+            <div class="col-md-10" style="visibility:hidden">
+                <input asp-for="GroupID" value="@ViewData["GroupId"]" class="form-control" />
+                <span asp-validation-for="GroupID" class="text-danger" />
+            </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@Resource.Send" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

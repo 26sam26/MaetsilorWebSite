@@ -4,28 +4,28 @@
     ViewData["Title"] = "IndexUserGroups";
 }
 
-<h2>My Groups</h2>
+<h2>@Resource.MyGroups</h2>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                @Resource.Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeDePartie)
+                @Resource.TypeOfGame
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxDeJoueur)
+                @Resource.MaxPlayer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MinDeJoueur)
+                @Resource.MinPlayer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaitreDuJeu)
+                @Resource.GameMaster
             </th>
             <th></th>
         </tr>
@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.MaitreDuJeu)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID})
+                @Html.ActionLink(@Resource.Delete, "Delete", new { id=item.ID})
             </td>
         </tr>
 }

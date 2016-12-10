@@ -10,6 +10,7 @@ using Maetsilor.Models.MatchMakingViewModel;
 
 namespace Maetsilor.Data
 {
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Sujet> Sujets { get; set; }

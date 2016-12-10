@@ -4,14 +4,17 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
 
+<h2>Edit</h2>
+<div>
+    <a asp-action="Details" asp-route-id="@Model.ID">@Resource.Back</a>
+</div>
 <form asp-action="Edit">
     <div class="form-horizontal">
         <h4>@Model.Nom</h4>
         <hr />
         <div class="form-group">
-            <label asp-for="Nom" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label">@Resource.Name</label>
             <div class="col-md-10">
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger" />
@@ -25,21 +28,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="TypeDePartie" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">@Resource.TypeOfGame</label>
             <div class="col-md-10">
                 <input asp-for="TypeDePartie" class="form-control" />
                 <span asp-validation-for="TypeDePartie" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="MaxDeJoueur" class="col-md-2 control-label"></label>
+            <label  class="col-md-2 control-label">@Resource.MaxPlayer</label>
             <div class="col-md-10">
                 <input asp-for="MaxDeJoueur" class="form-control" />
                 <span asp-validation-for="MaxDeJoueur" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="MinDeJoueur" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">@Resource.MinPlayer</label>
             <div class="col-md-10">
                 <input asp-for="MinDeJoueur" class="form-control" />
                 <span asp-validation-for="MinDeJoueur" class="text-danger" />
@@ -47,15 +50,13 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@Resource.Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

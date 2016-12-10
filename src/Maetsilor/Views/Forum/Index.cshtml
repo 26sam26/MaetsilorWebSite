@@ -14,25 +14,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Titre)
+                @Resource.Title
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Auteur)
+                @Resource.Author
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateCreation)
+                Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DerniereReponse)
+                @Resource.LastAnswer
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DernierRepondant)
+               @Resource.LastReplier
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NbReponse)
+                @Resource.NbAnswer
             </th>
             <th></th>
         </tr>
@@ -66,7 +66,7 @@
                         @if (User.IsInRole("Modérateur"))
                     {
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) ;
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID });
+                            @Html.ActionLink( @Resource.Delete, "Delete", new { id = item.ID });
                     }
 
                     </td>
